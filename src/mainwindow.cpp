@@ -146,7 +146,7 @@ MainWindow::MainWindow(QWidget *parent) :
         bgm->setAudioOutput(audio_output);
         //connect(bgm, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
         bgm->setSource(QUrl::fromLocalFile("./Music/" + this->startup->music_text));
-        audio_output->setVolume(50);
+        audio_output->setVolume(audio_volume);
         bgm->setLoops(QMediaPlayer::Infinite);
         bgm->play();
     }
@@ -392,7 +392,7 @@ void MainWindow::Finish(GameSystem::WINNER winner)
         bgm->setAudioOutput(audio_output);
         //connect(bgm, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
         bgm->setSource(QUrl("qrc:/Sound/ji_023.wav"));
-        audio_output->setVolume(50);
+        audio_output->setVolume(audio_volume);
         bgm->play();
     }
 

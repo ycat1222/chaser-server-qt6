@@ -31,8 +31,8 @@ private:
     QTimer* teamshow_anime; //チーム表示アニメーション
     QTimer* blind_anime;    //まっくらアニメーション
     StartupDialog* startup; //スタートアップダイアログ
-    QMediaPlayer *bgm;           //音楽
-    QAudioOutput *audio_output; //音声出力
+    QMediaPlayer* bgm;           //音楽
+    QAudioOutput* audio_output; //音声出力
 
     bool silent;
 
@@ -44,6 +44,7 @@ private:
     int anime_map_time   = 6000; //マップ構築アニメーション時間
     int anime_team_time  = 2000; //チーム配置アニメーション時間
     int anime_blind_time = 1000; //まっくらアニメーション時間
+	float audio_volume = 0.8f; //音量
 
     GameSystem::WINNER win;
 
