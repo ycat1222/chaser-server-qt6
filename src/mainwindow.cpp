@@ -144,7 +144,7 @@ MainWindow::MainWindow(QWidget *parent) :
     bgm = new QMediaPlayer;
     audio_output = new QAudioOutput;
 
-    if(!silent && this->startup->music_text != "none"){
+    if(!silent && this->startup->music_text != "None"){
         bgm->setAudioOutput(audio_output);
         bgm->setSource(QUrl::fromLocalFile("./Music/" + this->startup->music_text));
         audio_output->setVolume(audio_volume);
@@ -248,7 +248,8 @@ void MainWindow::s_messageHandler(QtMsgType type, const QMessageLogContext& cont
 
 MainWindow::~MainWindow()
 {
-    if(!silent)bgm->stop();
+    //BGMを停止
+    if(!silent && this->startup->music_text != "None")bgm->stop();
 
     //メッセージハンドラをもとに戻す
 	qInstallMessageHandler(s_prevMsgHandler);
@@ -321,8 +322,6 @@ void MainWindow::StepGame()
         this->win = Judge();
 
         if(win != GameSystem::WINNER::CONTINUE){
-            if(!silent)bgm->stop();
-
             player++;
             player %= TEAM_COUNT;
 
@@ -442,8 +441,10 @@ void MainWindow::Finish(GameSystem::WINNER winner)
     }
     log << this->ui->WinnerLabel->text() << "\r\n";
 
-    if(!silent)bgm->stop();
+    //BGMを停止
+    if(!silent && this->startup->music_text != "None")bgm->stop();
 
+    //試合終了時のファンファーレを再生
     if(!silent){
         bgm = new QMediaPlayer;
         audio_output = new QAudioOutput;
