@@ -449,7 +449,7 @@ void MainWindow::Finish(GameSystem::WINNER winner)
         audio_output = new QAudioOutput;
         bgm->setAudioOutput(audio_output);
         //connect(bgm, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
-        bgm->setSource(QUrl("qrc:/Sound/ji_023.wav"));
+        bgm->setSource(QUrl("qrc:/Sound/ji_023.mp3"));
         audio_output->setVolume(audio_volume);
         bgm->play();
     }
