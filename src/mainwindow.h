@@ -51,6 +51,15 @@ private:
     static QString getTime();
     static QString convertString(GameSystem::Method method);
 
+    // qInstallMessageHandler 用
+    static MainWindow* s_instance;
+
+	// 前のメッセージハンドラを保存するための変数
+    static QtMessageHandler s_prevMsgHandler;
+
+	// メッセージハンドラ(ファイルへのログの書き出しを追加)
+    static void s_messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg);
+
 protected:
     void keyPressEvent(QKeyEvent* event);
 
