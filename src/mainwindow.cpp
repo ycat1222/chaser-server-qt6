@@ -248,6 +248,9 @@ void MainWindow::s_messageHandler(QtMsgType type, const QMessageLogContext& cont
 
 MainWindow::~MainWindow()
 {
+    //試合を停止
+    this->clock->stop();
+
     //BGMを停止
     if(!silent && this->startup->music_text != "None")bgm->stop();
 
