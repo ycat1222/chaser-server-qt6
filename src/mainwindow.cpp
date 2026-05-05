@@ -583,7 +583,7 @@ void MainWindow::StartAnimation()
 
     ui->Field->RefreshOverlay();
 
-    QPoint pos[2];
+    QPoint pos[3];
     if(ANIMATION_TYPE == 0){
         //ランダムにワサッて
         //一度に2マス表示させるのですわ

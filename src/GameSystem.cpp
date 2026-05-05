@@ -86,7 +86,7 @@ bool GameSystem::Map::Import(QString Filename){
 
             //チーム初期位置
             for(int i=0;i<TEAM_COUNT;i++){
-                if(str[0]==GameSystem::TEAM_PROPERTY::getTeamName(static_cast<GameSystem::TEAM>(i))[0]){
+                if(str[0]==GameSystem::TEAM_PROPERTY::getTeamName(static_cast<GameSystem::TEAM>(i)).at(0)){
                     QStringList list = str.remove(0,2).split(",");
                     team_first_point[i] = QPoint(list[0].toInt(),list[1].toInt());
                 }
@@ -106,13 +106,12 @@ bool GameSystem::Map::Export(QString Filename){
     QString fileExt = Filename.split("/").last().split(".").last();
 
     //Log出力時は追記モードでファイルを開く
-    if (fileExt == "txt") {
-        file.open(QIODevice::WriteOnly | QIODevice::Append);
-    } else {
-        if (!file.open(QIODevice::WriteOnly)) {
-            QMessageBox::information(nullptr, "ファイルを開けません", file.errorString());
-            return false;
-        }
+    QIODevice::OpenMode openMode = (fileExt == "txt") ? 
+        (QIODevice::WriteOnly | QIODevice::Append) : QIODevice::WriteOnly;
+
+    if (!file.open(openMode)) {
+        QMessageBox::information(nullptr, "ファイルを開けません", file.errorString());
+        return false;
     }
 
     //Map出力
@@ -122,7 +121,7 @@ bool GameSystem::Map::Export(QString Filename){
     stream << "N:" + outname << "\n";
     stream << "T:" + QString::number(this->turn) + "\n";
     stream << "S:" + QString::number(size.x()) + "," + QString::number(size.y()) + "\n";
-    for(auto v1 : field){
+    for(auto v1 : std::as_const(field)){
         stream << "D:";
         for(auto it = v1.begin();it != v1.end();it++){
             stream << QString::number(static_cast<int>(*it));
@@ -131,7 +130,7 @@ bool GameSystem::Map::Export(QString Filename){
         stream << "\n";
     }
     for(int i=0;i<TEAM_COUNT;i++){
-        stream << QString(GameSystem::TEAM_PROPERTY::getTeamName(static_cast<GameSystem::TEAM>(i))[0])
+        stream << QString(GameSystem::TEAM_PROPERTY::getTeamName(static_cast<GameSystem::TEAM>(i)).at(0))
                 + ":"
                 + QString::number(team_first_point[i] .x())
                 + ","
