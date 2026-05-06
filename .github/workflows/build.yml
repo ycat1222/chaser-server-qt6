@@ -26,7 +26,7 @@ jobs:
             qt_dir: gcc_arm64
             qmake_args: "QMAKE_CC=/usr/bin/gcc QMAKE_CXX=/usr/bin/g++ QMAKE_LINK=/usr/bin/g++ -spec linux-g++"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install Qt & Build
         run: |
           echo "Install Build Tools"
@@ -62,7 +62,7 @@ jobs:
           ./squashfs-root/usr/bin/linuxdeployqt ./AsahikawaProcon-Server -appimage -unsupported-allow-new-glibc
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: CHaserServer-${{ matrix.arch }}
           path: ./build/*.AppImage
