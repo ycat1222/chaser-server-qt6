@@ -138,13 +138,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     player = 0;
 
-    startup_anime = new QTimer();
+    startup_anime = new QTimer(this);
     connect(startup_anime, &QTimer::timeout, this, &MainWindow::StartAnimation);
     startup_anime->start(anime_map_time / (startup->map.size.x()*startup->map.size.y()));
 
     //消音モードじゃない かつ Musicフォルダに音楽が存在する ならBGMセット
-    bgm = new QMediaPlayer;
-    audio_output = new QAudioOutput;
+    bgm = new QMediaPlayer(this);
+    audio_output = new QAudioOutput(this);
 
     if(!silent && this->startup->music_text != "None"){
         bgm->setAudioOutput(audio_output);
@@ -444,8 +444,8 @@ void MainWindow::Finish(GameSystem::WINNER winner)
 
     //試合終了時のファンファーレを再生
     if(!silent){
-        bgm = new QMediaPlayer;
-        audio_output = new QAudioOutput;
+        bgm = new QMediaPlayer(this);
+        audio_output = new QAudioOutput(this);
         bgm->setAudioOutput(audio_output);
         //connect(bgm, SIGNAL(positionChanged(qint64)), this, SLOT(positionChanged(qint64)));
         bgm->setSource(QUrl("qrc:/Sound/ji_023.mp3"));
