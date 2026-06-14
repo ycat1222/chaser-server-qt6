@@ -84,32 +84,34 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //ServerSetting読み込み
     QString path;
-    QSettings* mSettings;
+    // iniファイルで設定を保存
+    QSettings mSettings("setting.ini", QSettings::IniFormat);
     QVariant v;
-    mSettings = new QSettings( "setting.ini", QSettings::IniFormat ); // iniファイルで設定を保存
+    //mSettings = new QSettings( "setting.ini", QSettings::IniFormat ); // iniファイルで設定を保存
     // mSettings->setIniCodec( "UTF-8" ); // iniファイルの文字コード
-    v = mSettings->value( "LogFilepath" );
+    v = mSettings.value( "LogFilepath" );
     if (v.typeId() != QMetaType::UnknownType)path = v.toString();
-    v = mSettings->value( "Gamespeed" );
-    if (v.typeId() != QMetaType::UnknownType)FRAME_RATE = v.toInt();
-    v = mSettings->value( "Silent" );
+
+    v = mSettings.value( "Gamespeed" );
+    if (v.typeId() != QMetaType::UnknownType && v.toInt() > 0)FRAME_RATE = v.toInt();
+
+    v = mSettings.value( "Silent" );
     if (v.typeId() != QMetaType::UnknownType)silent = v.toBool();
     else silent = false;
 
-    v = mSettings->value( "Team" );
-    if (v.typeId() != QMetaType::UnknownType)anime_team_time = v.toInt();
-
     //デザイン設定を書き換え
-    QSettings* dSettings;
+    QSettings dSettings("design.ini", QSettings::IniFormat);
     QVariant v2;
-    dSettings = new QSettings( "design.ini", QSettings::IniFormat ); // iniファイルで設定を保存
+    //dSettings = new QSettings( "design.ini", QSettings::IniFormat ); // iniファイルで設定を保存
     // dSettings->setIniCodec( "UTF-8" ); // iniファイルの文字コード
-    v2 = dSettings->value( "Dark" );
+    v2 = dSettings.value( "Dark" );
     if (v2.typeId() != QMetaType::UnknownType)dark = v2.toBool();
     else dark = false;
-    v2 = dSettings->value( "Bot" );
+
+    v2 = dSettings.value( "Bot" );
     if (v2.typeId() != QMetaType::UnknownType)isbotbattle = v2.toBool();
     else isbotbattle = false;
+
     if(dark == true)this->anime_map_time -= this->anime_blind_time;
 
     //ボット戦モードならば表記の変更
@@ -167,27 +169,20 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     ui->ItemLeaveLabel->setText(QString::number(this->ui->Field->leave_items));
 
-    v = mSettings->value( "Maximum" );
-    if (v.typeId() != QMetaType::UnknownType && v.toBool()){
+    v = mSettings.value( "Maximum" );
+    if (v.typeId() != QMetaType::UnknownType && v.toBool())
         setWindowState(Qt::WindowMaximized);
-
-    }
-
+    
 
     //AnimationTime読み込み
-    mSettings = new QSettings( "AnimationTime.ini", QSettings::IniFormat ); // iniファイルで設定を保存
-    v = mSettings->value( "Map" );
-    if (v.typeId() != QMetaType::UnknownType)anime_map_time = v.toInt();
-    else{
+    QSettings aSettings( "AnimationTime.ini", QSettings::IniFormat );
+    v = aSettings.value( "Map" );
+    if (v.typeId() != QMetaType::UnknownType && v.toInt() > 0)
+        anime_map_time = v.toInt();
 
-        QSettings* mSettings;
-        mSettings = new QSettings( "AnimationTime.ini", QSettings::IniFormat ); // iniファイルで設定を保存
-        // mSettings->setIniCodec( "UTF-8" ); // iniファイルの文字コード
-
-        mSettings->setValue( "Map" , anime_map_time );
-        mSettings->setValue( "Team", anime_team_time );
-
-    }
+    v = aSettings.value("Team");
+    if (v.typeId() != QMetaType::UnknownType && v.toInt() > 0)
+        anime_team_time = v.toInt();
 
     //ログにプレイヤー情報出力(プレイヤー名、IPアドレス)
     log << "[ Cool Player : Name = " + this->startup->team_client[static_cast<int>(GameSystem::TEAM::COOL)]->client->Name
