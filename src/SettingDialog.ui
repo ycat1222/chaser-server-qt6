@@ -223,6 +223,16 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>Log</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>Gamespeed</tabstop>
+  <tabstop>Timeout</tabstop>
+  <tabstop>SilentCheck</tabstop>
+  <tabstop>MaximumCheck</tabstop>
+  <tabstop>AnimeMapTime</tabstop>
+  <tabstop>AnimeTeamTime</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
