@@ -39,7 +39,7 @@
         <string>ゲームの進行速度です。</string>
        </property>
        <property name="minimum">
-        <number>0</number>
+        <number>1</number>
        </property>
        <property name="maximum">
         <number>10000</number>
