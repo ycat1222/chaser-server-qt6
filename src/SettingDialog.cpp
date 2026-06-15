@@ -12,19 +12,15 @@ SettingDialog::SettingDialog(QWidget *parent)
     ui->setupUi(this);
 
     QVariant v = mSettings.value("LogFilepath");
-
-    // 非推奨 QVariant::Invalid → QMetaType::UnknownType
     if (v.typeId() != QMetaType::UnknownType)
         ui->Log->setText(v.toString());
 
     v = mSettings.value("Timeout");
-
-    if (v.typeId() != QMetaType::UnknownType)
+    if (v.typeId() != QMetaType::UnknownType && v.toInt() > 0)
         ui->Timeout->setValue(v.toInt());
 
     v = mSettings.value("Gamespeed");
-
-    if (v.typeId() != QMetaType::UnknownType)
+    if (v.typeId() != QMetaType::UnknownType && v.toInt() > 0)
         ui->Gamespeed->setValue(v.toInt());
 
     v = mSettings.value("Silent");
@@ -32,7 +28,6 @@ SettingDialog::SettingDialog(QWidget *parent)
         ui->SilentCheck->setChecked(v.toBool());
 
     v = mSettings.value("Maximum");
-
     if (v.typeId() != QMetaType::UnknownType)
         ui->MaximumCheck->setChecked(v.toBool());
 
