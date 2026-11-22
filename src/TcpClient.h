@@ -30,9 +30,9 @@ public:
     virtual bool WaitEndSharp(GameSystem::AroundData data);
 
     //ポート開く
-    bool OpenSocket(int Port);
+    bool OpenSocket(int Port) override;
     //ポート閉じる
-    bool CloseSocket();
+    bool CloseSocket() override;
     //接続確認
     bool isConnecting();
 

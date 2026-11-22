@@ -48,9 +48,7 @@ void ClientSettingForm::DisConnected() {
 
     disconnect(this->client, &TCPClient::Disconnected, this, &ClientSettingForm::DisConnected);
     //TCP待機やめ
-    if (dynamic_cast<TCPClient*>(this->client) != nullptr) {
-        dynamic_cast<TCPClient*>(this->client)->CloseSocket();
-    }
+    this->client->CloseSocket();
     this->client = new TCPClient(this);
 
     //再connectしクライアントの接続を待つ
@@ -77,13 +75,13 @@ void ClientSettingForm::ConnectionToggled(bool state)
 {
     if(state){
         //TCP待機開始
-        dynamic_cast<TCPClient*>(this->client)->OpenSocket(ui->PortSpinBox->value());
+        this->client->OpenSocket(ui->PortSpinBox->value());
         this->ui->ConnectButton->setText("待機終了");
         this->ui->StateLabel->setText("TCP接続待ち状態");
         this->ui->PortSpinBox->setEnabled(false);
     }else{
         //TCP待機やめ
-        dynamic_cast<TCPClient*>(this->client)->CloseSocket();
+        this->client->CloseSocket();
         //this->client->Startup();
 
         this->ui->ConnectButton->setText("接続開始");

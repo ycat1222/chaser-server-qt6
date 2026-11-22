@@ -23,6 +23,10 @@ public:
 
     //親のシグナルスロットが終わりしだい呼び出される関数
     virtual void Startup();
+    //接続を閉じる(仮想関数のため、接続を持たないクライアントでは固定でtrueを返す)
+    virtual bool CloseSocket();
+    //接続を開く(仮想関数のため、接続を持たないクライアントでは固定でtrueを返す)
+    virtual bool OpenSocket(int port);
 
     explicit BaseClient(QObject *parent = nullptr);
     virtual ~BaseClient();
