@@ -34,7 +34,7 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="whatsThis">
+     <property name="toolTip">">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップを作成する画面です。クリックおよびドラッグで配置することができます。&lt;/p&gt;&lt;p&gt;COOLとHOTは各１つのみ配置できます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
@@ -66,7 +66,7 @@
          <pointsize>11</pointsize>
         </font>
        </property>
-       <property name="whatsThis">
+       <property name="toolTip">">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップに使用する部品を選択します。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
@@ -109,7 +109,7 @@
      </item>
      <item>
       <widget class="QComboBox" name="comboBox">
-       <property name="whatsThis">
+       <property name="toolTip">">
         <string>マップの大きさを設定します。</string>
        </property>
        <item>
@@ -162,7 +162,7 @@
            <height>0</height>
           </size>
          </property>
-         <property name="whatsThis">
+         <property name="toolTip">">
           <string>マップのターン数です。</string>
          </property>
          <property name="minimum">
@@ -183,7 +183,7 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="whatsThis">
+       <property name="toolTip">">
         <string>チェックを入れた場合、マップは点対称になります。</string>
        </property>
        <property name="text">
@@ -324,7 +324,7 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="whatsThis">
+       <property name="toolTip">">
         <string>全てのアイテム、ブロックを取り除きます。</string>
        </property>
        <property name="text">
@@ -343,7 +343,7 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="whatsThis">
+       <property name="toolTip">">
         <string>マップを書き出します。</string>
        </property>
        <property name="text">
@@ -362,7 +362,7 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="whatsThis">
+       <property name="toolTip">">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップエディタを完了し、閉じます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">

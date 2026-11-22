@@ -37,7 +37,7 @@
            <height>16</height>
           </rect>
          </property>
-         <property name="whatsThis">
+         <property name="toolTip">">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックを入れるとマップが暗転し、探索した範囲のみが描画される演出を有効にします。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
@@ -53,7 +53,7 @@
            <height>16</height>
           </rect>
          </property>
-         <property name="whatsThis">
+         <property name="toolTip">">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックを入れるとマップが暗転し、探索した範囲のみが描画される演出を有効にします。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">

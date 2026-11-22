@@ -35,7 +35,7 @@
    <item>
     <layout class="QFormLayout" name="formLayout">
      <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+      <enum>QFormLayout::FieldGrowthPolicy::FieldsStayAtSizeHint</enum>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
@@ -112,7 +112,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -124,8 +124,8 @@
      </item>
      <item>
       <widget class="QComboBox" name="ComboBox">
-       <property name="whatsThis">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;「TCPユーザー」&lt;/p&gt;&lt;p&gt;クライアントと通信する一般的な形式です。&lt;/p&gt;&lt;p&gt;「自動くん」&lt;/p&gt;&lt;p&gt;移動を行わず、探索を繰り返すデバッグ用のクライアントです。&lt;/p&gt;&lt;p&gt;「ManualClient」&lt;/p&gt;&lt;p&gt;手動で操作するデバッグ用のクライアントです。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;「TCPユーザー」&lt;br/&gt;クライアントと通信する一般的な形式です。&lt;/p&gt;&lt;p&gt;「自動くん」&lt;br/&gt;移動を行わず、探索を繰り返すデバッグ用のクライアントです。&lt;/p&gt;&lt;p&gt;「ManualClient」&lt;br/&gt;手動で操作するデバッグ用のクライアントです。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <item>
         <property name="text">
