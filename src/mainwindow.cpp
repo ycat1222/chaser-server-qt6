@@ -50,6 +50,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->startup = new StartupDialog();
+
+    // ボットの設定を読み込み (スタートアップダイアログ開始前に読み込んでおく)
+    QSettings botSettings("setting.ini", QSettings::IniFormat);
+    for (ClientSettingForm *client : this->startup->team_client) {
+        client->SetBotSettings(
+            botSettings.value("BotFilePath", ClientSettingForm::DEFAULT_BOT_FILE_PATH).toString(),
+            botSettings.value("BotName", ClientSettingForm::DEFAULT_BOT_NAME).toString());
+    }
+
     this->win = GameSystem::WINNER::CONTINUE;
 
     //Functorベースでは動作しないため、Stringベースでconnect
@@ -87,8 +96,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // iniファイルで設定を保存
     QSettings mSettings("setting.ini", QSettings::IniFormat);
     QVariant v;
-    //mSettings = new QSettings( "setting.ini", QSettings::IniFormat ); // iniファイルで設定を保存
-    // mSettings->setIniCodec( "UTF-8" ); // iniファイルの文字コード
     v = mSettings.value( "LogFilepath" );
     if (v.typeId() != QMetaType::UnknownType)path = v.toString();
 
@@ -102,8 +109,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //デザイン設定を書き換え
     QSettings dSettings("design.ini", QSettings::IniFormat);
     QVariant v2;
-    //dSettings = new QSettings( "design.ini", QSettings::IniFormat ); // iniファイルで設定を保存
-    // dSettings->setIniCodec( "UTF-8" ); // iniファイルの文字コード
     v2 = dSettings.value( "Dark" );
     if (v2.typeId() != QMetaType::UnknownType)dark = v2.toBool();
     else dark = false;
@@ -172,7 +177,7 @@ MainWindow::MainWindow(QWidget *parent) :
     v = mSettings.value( "Maximum" );
     if (v.typeId() != QMetaType::UnknownType && v.toBool())
         setWindowState(Qt::WindowMaximized);
-    
+
 
     //AnimationTime読み込み
     QSettings aSettings( "AnimationTime.ini", QSettings::IniFormat );
@@ -197,7 +202,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Field->field.Export(log.filename());
     log << "]\r\n";
 
-    log << getTime() + "セットアップ完了　ゲームを開始します。\r\n";    
+    log << getTime() + "セットアップ完了　ゲームを開始します。\r\n";
 }
 
 void MainWindow::s_messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg)

@@ -6,16 +6,13 @@ ClientSettingForm::ClientSettingForm(QWidget *parent) :
     ui(new Ui::ClientSettingForm)
 {
     ui->setupUi(this);
+    SetBotSettings(DEFAULT_BOT_FILE_PATH, DEFAULT_BOT_NAME);
+
     this->client = new TCPClient();
     connect(this->client, &TCPClient::Connected,    this, &ClientSettingForm::Connected);
     connect(this->client, &TCPClient::Ready,        this, &ClientSettingForm::SetStandby);
     connect(this->client, &TCPClient::Disconnected, this, &ClientSettingForm::DisConnected);
 
-    //Windowsでボットのexeファイルがあるときのみ、ボットプログラムを動かせるように設定
-    #ifdef Q_OS_WINDOWS
-        if(QFile::exists("./2019-U16asahikawaBot/u16asahikawaBot.exe"))
-            ui->ComboBox->addItem("botV4");
-    #endif
 }
 
 ClientSettingForm::~ClientSettingForm()
@@ -23,6 +20,24 @@ ClientSettingForm::~ClientSettingForm()
     delete ui;
     delete this->client;
     delete botProcess;
+}
+
+void ClientSettingForm::SetBotSettings(const QString &filePath, const QString &name)
+{
+    //Windowsでボットのexeファイルがあるときのみ、ボットプログラムを動かせるように設定
+#ifdef Q_OS_WINDOWS
+    const int oldBotIndex = ui->ComboBox->findText(botName);
+    if (oldBotIndex >= 0)
+        ui->ComboBox->removeItem(oldBotIndex);
+#endif
+
+    botFilePath = filePath;
+    botName = name;
+
+#ifdef Q_OS_WINDOWS
+    if (!botName.isEmpty() && QFile::exists(botFilePath))
+        ui->ComboBox->addItem(botName);
+#endif
 }
 
 void ClientSettingForm::SetStandby()
@@ -111,7 +126,7 @@ void ClientSettingForm::ComboBoxChenged(QString text)
         if(text=="ManualClient")this->client = new ManualClient(this);
 
         //ボットを接続
-        if(text=="botV4"){
+        if(text == botName){
             this->client = new TCPClient(this);
 
             //待機開始
@@ -120,10 +135,10 @@ void ClientSettingForm::ComboBoxChenged(QString text)
             botProcess = new QProcess();
 
             // "u16asahikawaBot.exe a:127.0.0.1 p:2009 n:botV4"のような文字列を作る
-            QString command = "./2019-U16asahikawaBot/u16asahikawaBot.exe";
+            QString command = botFilePath;
             QStringList option;
 
-            option << "a:127.0.0.1" << "p:" + QString::number(ui->PortSpinBox->value()) << "n:botV4";
+            option << "a:127.0.0.1" << "p:" + QString::number(ui->PortSpinBox->value()) << "n:" + botName;
 
             botProcess->start(command, option);
         }

@@ -9,7 +9,6 @@
 #include "ComClient.h"
 #include "ManualClient.h"
 
-
 namespace Ui {
 class ClientSettingForm;
 }
@@ -23,21 +22,27 @@ public:
 
     explicit ClientSettingForm(QWidget *parent = 0);
     ~ClientSettingForm();
+    void SetPortSpin(int num);
+    void SetBotSettings(const QString &filePath, const QString &name);
+
+    inline static const QString DEFAULT_BOT_FILE_PATH = QStringLiteral("./2019-U16asahikawaBot/u16asahikawaBot.exe");
+    inline static const QString DEFAULT_BOT_NAME = QStringLiteral("botV4");
 
 public slots:
-
     void SetStandby ();
     void Connected  ();
     void DisConnected();
     void ConnectionToggled(bool state);
     void ComboBoxChenged(QString text);
-    void SetPortSpin(int num);
 
 signals:
     void Standby(ClientSettingForm* client,bool complate);//準備完了
 private:
+    QString botFilePath = DEFAULT_BOT_FILE_PATH;
+    QString botName = DEFAULT_BOT_NAME;
+
     Ui::ClientSettingForm *ui;
-    QProcess *botProcess;
+    QProcess *botProcess = nullptr;
 };
 
 #endif // CLIENTSETTINGFORM_H
