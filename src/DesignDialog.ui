@@ -37,7 +37,7 @@
            <height>16</height>
           </rect>
          </property>
-         <property name="toolTip">">
+         <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックを入れるとマップが暗転し、探索した範囲のみが描画される演出を有効にします。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
@@ -52,9 +52,6 @@
            <width>460</width>
            <height>16</height>
           </rect>
-         </property>
-         <property name="toolTip">">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックを入れるとマップが暗転し、探索した範囲のみが描画される演出を有効にします。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
           <string>ボット対戦モード(スコアが「残りターン数+アイテム×3」になります)</string>

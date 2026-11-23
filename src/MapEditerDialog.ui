@@ -34,7 +34,7 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="toolTip">">
+     <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップを作成する画面です。クリックおよびドラッグで配置することができます。&lt;/p&gt;&lt;p&gt;COOLとHOTは各１つのみ配置できます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
@@ -66,7 +66,7 @@
          <pointsize>11</pointsize>
         </font>
        </property>
-       <property name="toolTip">">
+       <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップに使用する部品を選択します。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
@@ -109,8 +109,8 @@
      </item>
      <item>
       <widget class="QComboBox" name="comboBox">
-       <property name="toolTip">">
-        <string>マップの大きさを設定します。</string>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップの大きさを設定します。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <item>
         <property name="text">
@@ -162,8 +162,8 @@
            <height>0</height>
           </size>
          </property>
-         <property name="toolTip">">
-          <string>マップのターン数です。</string>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップのターン数です。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="minimum">
           <number>100</number>
@@ -183,8 +183,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="toolTip">">
-        <string>チェックを入れた場合、マップは点対称になります。</string>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックを入れた場合、マップは点対称になります。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>対称</string>
@@ -196,6 +196,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="randomGenerateButton">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;大会ルール バージョン3.0.1に則りマップをランダムに生成します。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>ランダム生成</string>
        </property>
@@ -206,6 +209,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="randomGenerateButtonOld">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;大会ルール バージョン2.3.1に則りマップをランダムに生成します。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>ランダム生成(旧仕様)</string>
        </property>
@@ -324,8 +330,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="toolTip">">
-        <string>全てのアイテム、ブロックを取り除きます。</string>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;全てのアイテム、ブロックを取り除きます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>全消し</string>
@@ -343,8 +349,8 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="toolTip">">
-        <string>マップを書き出します。</string>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップを書き出します。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>書き出し</string>
@@ -362,7 +368,7 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="toolTip">">
+       <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;マップエディタを完了し、閉じます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
